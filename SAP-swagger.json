@@ -1,0 +1,4271 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Interface to ECommerce",
+    "description": "Interface to ECommerce REST functions"
+  },
+  "basePath": "/sap/zec/rest",
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "schemes": ["https", "http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/BOMS_BASE2_GET/": {
+      "post": {
+        "tags": ["Boms"],
+        "summary": "Z_WEB_EC_PRODUCT_UPD_SMALL_GET",
+        "description": "",
+        "parameters": [
+          {
+            "name": "JSON",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/BOMS_BASE2_GET_Request"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_BOMS_BASE2_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/BOMS_BASE_GET": {
+      "post": {
+        "tags": ["Boms"],
+        "summary": "Get Boms base info",
+        "description": "",
+        "parameters": [
+          {
+            "name": "JSON",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/BOMS_BASE_GET_Request"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_BOMS_BASE_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/BOMS_GET/": {
+      "get": {
+        "tags": ["Boms"],
+        "summary": "Get product package",
+        "description": "",
+        "parameters": [
+          {
+            "name": "T_MATERIAL",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "MATNR": {
+                      "type": "string",
+                      "maxLength": 40
+                    }
+                  }
+                }
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_BOMS_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/SO_CREATE/": {
+      "post": {
+        "tags": ["Order"],
+        "summary": "Creates Sales Order",
+        "description": "",
+        "parameters": [
+          {
+            "name": "JSON",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/SO_CREATE_Request"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_SO_CREATE"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/CUSTOMER_ACC_LIMIT_CHECK/": {
+      "get": {
+        "tags": ["Customer"],
+        "summary": "Check invoice account limit and approval",
+        "description": "",
+        "parameters": [
+          {
+            "name": "INV_AMOUNT",
+            "in": "query",
+            "description": "",
+            "type": "number",
+            "required": true
+          },
+          {
+            "name": "KENNITALA",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "KUNNR",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": false
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_CUSTOMER_ACC_LIMIT_CHECK"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/CUSTOMER_ADDRESS_GET/": {
+      "get": {
+        "tags": ["Customer"],
+        "summary": "Get all addresses for Customer",
+        "description": "",
+        "parameters": [
+          {
+            "name": "KUNNR",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          },
+          {
+            "name": "TYPE",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 2,
+            "required": false
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_CUSTOMER_ADDRESS_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/CUSTOMER_ADDRESS_MOD/": {
+      "post": {
+        "tags": ["Customer"],
+        "summary": "Modify customer address",
+        "description": "",
+        "parameters": [
+          {
+            "name": "JSON",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CUSTOMER_ADDRESS_MOD_Request"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_CUSTOMER_ADDRESS_MOD"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/CUSTOMER_SHIPTO_ADDR_ADD/": {
+      "post": {
+        "tags": ["Customer"],
+        "summary": "Create ship to address Customer",
+        "description": "",
+        "parameters": [
+          {
+            "name": "JSON",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CUSTOMER_SHIPTO_ADDR_ADD_Request"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_CUSTOMER_SHIPTO_ADDR_ADD"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/CUSTOMER_SHIPTO_ADDR_DEL/": {
+      "post": {
+        "tags": ["Customer"],
+        "summary": "Remove ship to address for Customer",
+        "description": "",
+        "parameters": [
+          {
+            "name": "JSON",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CUSTOMER_SHIPTO_ADDR_DEL_Request"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_CUSTOMER_SHIPTO_ADDR_DEL"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/CUSTOMER_BILLINGDOC_GET/": {
+      "get": {
+        "tags": ["Customer"],
+        "summary": "Get customers billing documents",
+        "description": "",
+        "parameters": [
+          {
+            "name": "BILLINGDOCUMENT",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": false
+          },
+          {
+            "name": "DATE_FROM",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "DATE_TO",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "KUNNR",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          },
+          {
+            "name": "TEXT",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 1,
+            "required": false
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_CUSTOMER_BILLINGDOC_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/CUSTOMER_CREATE/": {
+      "post": {
+        "tags": ["Customer"],
+        "summary": "Create new customer from National registry",
+        "description": "",
+        "parameters": [
+          {
+            "name": "JSON",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CUSTOMER_CREATE_Request"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_CUSTOMER_CREATE"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/CUSTOMER_QUOTATION_GET/": {
+      "get": {
+        "tags": ["Customer"],
+        "summary": "Get quotation for Customer",
+        "description": "",
+        "parameters": [
+          {
+            "name": "KUNNR",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          },
+          {
+            "name": "QUOTATION",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": false
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_CUSTOMER_QUOTATION_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/CUSTOMER_SALES_HISTORY_GET/": {
+      "get": {
+        "tags": ["Customer"],
+        "summary": "Get Purchase History for Customer",
+        "description": "",
+        "parameters": [
+          {
+            "name": "DATE_FROM",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "DATE_TO",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "KUNNR",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_CUSTOMER_SALES_HIST_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/MATERIAL_BASE2_GET/": {
+      "post": {
+        "tags": ["Material"],
+        "summary": "Get material basic information",
+        "description": "",
+        "parameters": [
+          {
+            "name": "JSON",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/MATERIAL_BASE2_GET_Request"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_MATERIAL_BASE2_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/MATERIAL_BASE_GET/": {
+      "post": {
+        "tags": ["Material"],
+        "summary": "Get material basic information",
+        "description": "",
+        "parameters": [
+          {
+            "name": "JSON",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/MATERIAL_BASE_GET_Request"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_MATERIAL_BASE_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/MATERIAL_CROSS_SELL_GET/": {
+      "get": {
+        "tags": ["Material"],
+        "summary": "Get cross selling material.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "MATERIAL",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 40,
+            "required": true
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_MATERIAL_CROSS_SELL_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/MATERIAL_DETAIL2_GET/": {
+      "get": {
+        "tags": ["Material"],
+        "summary": "Get product updates info",
+        "description": "",
+        "parameters": [
+          {
+            "name": "MATERIAL",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 40,
+            "required": false
+          },
+          {
+            "name": "SIMULATE_PRICE",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 1,
+            "required": false
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_MATERIAL_DETAIL2_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/MATERIAL_DETAIL_GET/": {
+      "get": {
+        "tags": ["Material"],
+        "summary": "Get product updates info",
+        "description": "",
+        "parameters": [
+          {
+            "name": "MATERIAL",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 40,
+            "required": false
+          },
+          {
+            "name": "SIMULATE_PRICE",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 1,
+            "required": false
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_MATERIAL_DETAIL_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/MATERIAL_TEXT_GET/": {
+      "get": {
+        "tags": ["Material"],
+        "summary": "Get long text for material",
+        "description": "",
+        "parameters": [
+          {
+            "name": "MATERIAL",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 40,
+            "required": true
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_MATERIAL_TEXT_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/ORDER_INVOICE_PDF2_GET/": {
+      "get": {
+        "tags": ["Order"],
+        "summary": "Get invoice from Order",
+        "description": "",
+        "parameters": [
+          {
+            "name": "BILLINGDOC",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": false
+          },
+          {
+            "name": "KUNNR",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          },
+          {
+            "name": "OUTPUTTYPE",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 4,
+            "required": false
+          },
+          {
+            "name": "SALESDOC",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": false
+          },
+          {
+            "name": "SKIP_LEGACY",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 1,
+            "required": false
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_ORDER_INVOICE_PDF2_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/ORDER_INVOICE_PDF_GET/": {
+      "get": {
+        "tags": ["Order"],
+        "summary": "Get invoice from Order",
+        "description": "",
+        "parameters": [
+          {
+            "name": "BILLINGDOC",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": false
+          },
+          {
+            "name": "KUNNR",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          },
+          {
+            "name": "OUTPUTTYPE",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 4,
+            "required": false
+          },
+          {
+            "name": "SALESDOC",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": false
+          },
+          {
+            "name": "SKIP_LEGACY",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 1,
+            "required": false
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_ORDER_INVOICE_PDF_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/ORDER_QUOTATION_PDF_GET/": {
+      "get": {
+        "tags": ["Order"],
+        "summary": "Get quotation from invoice",
+        "description": "",
+        "parameters": [
+          {
+            "name": "QUOTATION",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_ORDER_QUOTATION_PDF_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/CLASS_CHAR_GET/": {
+      "get": {
+        "tags": ["Other"],
+        "summary": "Get Class and Characteristic",
+        "description": "",
+        "parameters": [
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_CLASS_CHAR_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/NATIONAL_REGISTRY_READ/": {
+      "get": {
+        "tags": ["Other"],
+        "summary": "",
+        "description": "",
+        "parameters": [
+          {
+            "name": "KENNITALA",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "WEBID",
+            "in": "query",
+            "description": "",
+            "type": "string",
+            "maxLength": 10,
+            "required": true
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZEC_S_NATIONAL_REGISTRY_READ"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    },
+    "/MS_JOURNAL_GET/": {
+      "post": {
+        "tags": ["Other"],
+        "summary": "Get journals",
+        "description": "",
+        "parameters": [
+          {
+            "name": "JSON",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/MS_JOURNAL_GET_Request"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ZMS_S_JOURNAL_GET"
+            }
+          },
+          "401": {
+            "description": "not authorized"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "500": {
+            "description": "error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "STRING": {
+      "type": "string"
+    },
+    "ZEC_S_BOMS_BASE2_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "T_BOMS": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "MATNR": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "STLNR": {
+                    "type": "string",
+                    "maxLength": 8
+                  },
+                  "MAKTX": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "MVGR3": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "BASIC_TEXT": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "TDFORMAT": {
+                          "type": "string",
+                          "maxLength": 2
+                        },
+                        "TDLINE": {
+                          "type": "string",
+                          "maxLength": 132
+                        }
+                      }
+                    }
+                  },
+                  "PRODUCTS": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MENGE": {
+                          "type": "number"
+                        },
+                        "MATNR": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "VERD_VSK": {
+                          "type": "number"
+                        },
+                        "VERD": {
+                          "type": "number"
+                        },
+                        "TAX_PERCENT": {
+                          "type": "number"
+                        },
+                        "TAXM1": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "TAB_STORAGE": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "LGORT": {
+                                "type": "string",
+                                "maxLength": 4
+                              },
+                              "LGOBE": {
+                                "type": "string",
+                                "maxLength": 16
+                              },
+                              "PHYS_QTY": {
+                                "type": "number"
+                              },
+                              "NOTDEL_QTY": {
+                                "type": "number"
+                              },
+                              "RSV_QTY": {
+                                "type": "number"
+                              },
+                              "AVAIL_QTY": {
+                                "type": "number"
+                              },
+                              "AVAIL_DATE": {
+                                "type": "string"
+                              },
+                              "ERFMG": {
+                                "type": "number"
+                              }
+                            }
+                          }
+                        },
+                        "MVGR3": {
+                          "type": "string",
+                          "maxLength": 3
+                        },
+                        "MVGR2": {
+                          "type": "string",
+                          "maxLength": 3
+                        },
+                        "DISCOUNT_TYPE": {
+                          "type": "string",
+                          "maxLength": 10
+                        },
+                        "GR_VERD": {
+                          "type": "number"
+                        },
+                        "GR_VERD_VSK": {
+                          "type": "number"
+                        },
+                        "PHYS_QTY": {
+                          "type": "number"
+                        },
+                        "NOTDEL_QTY": {
+                          "type": "number"
+                        },
+                        "RSV_QTY": {
+                          "type": "number"
+                        },
+                        "AVAIL_QTY": {
+                          "type": "number"
+                        },
+                        "PO_QTY": {
+                          "type": "number"
+                        },
+                        "CONF_QTY": {
+                          "type": "number"
+                        },
+                        "SCHED_DATE": {
+                          "type": "string"
+                        },
+                        "CONF_DATE": {
+                          "type": "string"
+                        },
+                        "AVAIL_DATE": {
+                          "type": "string"
+                        },
+                        "LAEDA": {
+                          "type": "string"
+                        },
+                        "LAUHR": {
+                          "type": "string"
+                        },
+                        "MTART": {
+                          "type": "string",
+                          "maxLength": 4
+                        },
+                        "MVGR1": {
+                          "type": "string",
+                          "maxLength": 3
+                        }
+                      }
+                    }
+                  },
+                  "VERD": {
+                    "type": "number"
+                  },
+                  "VERD_VSK": {
+                    "type": "number"
+                  },
+                  "GR_VERD": {
+                    "type": "number"
+                  },
+                  "GR_VERD_VSK": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_BOMS_BASE_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "T_BOMS": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "MATNR": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "STLNR": {
+                    "type": "string",
+                    "maxLength": 8
+                  },
+                  "MAKTX": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "MVGR3": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "BASIC_TEXT": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "TDFORMAT": {
+                          "type": "string",
+                          "maxLength": 2
+                        },
+                        "TDLINE": {
+                          "type": "string",
+                          "maxLength": 132
+                        }
+                      }
+                    }
+                  },
+                  "PRODUCTS": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MENGE": {
+                          "type": "number"
+                        },
+                        "MATNR": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "VERD_VSK": {
+                          "type": "number"
+                        },
+                        "VERD": {
+                          "type": "number"
+                        },
+                        "TAX_PERCENT": {
+                          "type": "number"
+                        },
+                        "TAXM1": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "TAB_STORAGE": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "LGORT": {
+                                "type": "string",
+                                "maxLength": 4
+                              },
+                              "LGOBE": {
+                                "type": "string",
+                                "maxLength": 16
+                              },
+                              "PHYS_QTY": {
+                                "type": "number"
+                              },
+                              "NOTDEL_QTY": {
+                                "type": "number"
+                              },
+                              "RSV_QTY": {
+                                "type": "number"
+                              },
+                              "AVAIL_QTY": {
+                                "type": "number"
+                              },
+                              "AVAIL_DATE": {
+                                "type": "string"
+                              },
+                              "ERFMG": {
+                                "type": "number"
+                              }
+                            }
+                          }
+                        },
+                        "MVGR3": {
+                          "type": "string",
+                          "maxLength": 3
+                        },
+                        "MVGR2": {
+                          "type": "string",
+                          "maxLength": 3
+                        },
+                        "DISCOUNT_TYPE": {
+                          "type": "string",
+                          "maxLength": 10
+                        },
+                        "GR_VERD": {
+                          "type": "number"
+                        },
+                        "GR_VERD_VSK": {
+                          "type": "number"
+                        },
+                        "PHYS_QTY": {
+                          "type": "number"
+                        },
+                        "NOTDEL_QTY": {
+                          "type": "number"
+                        },
+                        "RSV_QTY": {
+                          "type": "number"
+                        },
+                        "AVAIL_QTY": {
+                          "type": "number"
+                        },
+                        "PO_QTY": {
+                          "type": "number"
+                        },
+                        "CONF_QTY": {
+                          "type": "number"
+                        },
+                        "SCHED_DATE": {
+                          "type": "string"
+                        },
+                        "CONF_DATE": {
+                          "type": "string"
+                        },
+                        "AVAIL_DATE": {
+                          "type": "string"
+                        },
+                        "LAEDA": {
+                          "type": "string"
+                        },
+                        "LAUHR": {
+                          "type": "string"
+                        },
+                        "MTART": {
+                          "type": "string",
+                          "maxLength": 4
+                        },
+                        "MVGR1": {
+                          "type": "string",
+                          "maxLength": 3
+                        }
+                      }
+                    }
+                  },
+                  "VERD": {
+                    "type": "number"
+                  },
+                  "VERD_VSK": {
+                    "type": "number"
+                  },
+                  "GR_VERD": {
+                    "type": "number"
+                  },
+                  "GR_VERD_VSK": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_BOMS_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "T_BOMS": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "MATNR": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "ANDAT": {
+                    "type": "string"
+                  },
+                  "ANNAM": {
+                    "type": "string",
+                    "maxLength": 12
+                  },
+                  "STLNR": {
+                    "type": "string",
+                    "maxLength": 8
+                  },
+                  "MAKTX": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "ZZMAKTX": {
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "COMPONENTS": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "IDNRK": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "MAKTX": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "MENGE": {
+                          "type": "number"
+                        },
+                        "SOLUVERD": {
+                          "type": "number"
+                        },
+                        "SOLUVERD_VSK": {
+                          "type": "number"
+                        },
+                        "GR_VERD": {
+                          "type": "number"
+                        },
+                        "GR_VERD_VSK": {
+                          "type": "number"
+                        },
+                        "MVGR3": {
+                          "type": "string",
+                          "maxLength": 3
+                        },
+                        "KBETR": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  "WEBTEXT": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "TDFORMAT": {
+                          "type": "string",
+                          "maxLength": 2
+                        },
+                        "TDLINE": {
+                          "type": "string",
+                          "maxLength": 132
+                        }
+                      }
+                    }
+                  },
+                  "NEWTEXT": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "CLASS": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "PARENT_CLASS": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "CLASS2": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "PARENT_CLASS2": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "MVGR3": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "VERD": {
+                    "type": "number"
+                  },
+                  "VERD_VSK": {
+                    "type": "number"
+                  },
+                  "GR_VERD": {
+                    "type": "number"
+                  },
+                  "GR_VERD_VSK": {
+                    "type": "number"
+                  },
+                  "TAB_CHARACT": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "CHARACT": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "VALUE_CHAR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "INHERITED": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "INSTANCE": {
+                          "type": "string"
+                        },
+                        "VALUE_NEUTRAL": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "CHARACT_DESCR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "VALUE_CHAR_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        },
+                        "VALUE_NEUTRAL_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        }
+                      }
+                    }
+                  },
+                  "TAB_CHARACT2": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "CHARACT": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "VALUE_CHAR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "INHERITED": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "INSTANCE": {
+                          "type": "string"
+                        },
+                        "VALUE_NEUTRAL": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "CHARACT_DESCR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "VALUE_CHAR_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        },
+                        "VALUE_NEUTRAL_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        }
+                      }
+                    }
+                  },
+                  "INCOMPLETE": {
+                    "type": "string",
+                    "maxLength": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_CLASS_CHAR_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "T_CLASS_CHARACT": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "CLASSNAME": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "DESCRIPTION": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "STATUS": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "PARENT_CLASSNAME": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "TAB_CHARACT": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "NAME_CHAR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "DESCR_CHAR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "ENTRY_OBLIGATORY": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "ADDITIONAL_VAL": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "UNIT": {
+                          "type": "string",
+                          "maxLength": 3
+                        },
+                        "UNIT_T_EXT": {
+                          "type": "string",
+                          "maxLength": 6
+                        },
+                        "BASE_UOM_ISO": {
+                          "type": "string",
+                          "maxLength": 3
+                        },
+                        "CURRENCY": {
+                          "type": "string",
+                          "maxLength": 5
+                        },
+                        "CURRENCY_ISO": {
+                          "type": "string",
+                          "maxLength": 3
+                        },
+                        "DATA_TYPE": {
+                          "type": "string",
+                          "maxLength": 4
+                        },
+                        "NUMBER_DIGITS": {
+                          "type": "integer"
+                        },
+                        "NUMBER_DECIMALS": {
+                          "type": "integer"
+                        },
+                        "TEMPLATE": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "DIN_KEY": {
+                          "type": "string",
+                          "maxLength": 3
+                        },
+                        "DEPARTMENT_VIEW": {
+                          "type": "string",
+                          "maxLength": 10
+                        },
+                        "SIGN": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "SINGLE_VALUE": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "INTERVALS_ALLOWED": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "CASE_SENSITIVE": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "OBJECT_TABLE": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "TABLE_FIELD": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "CHAR_INHERITED": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "TEMPLATE_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        }
+                      }
+                    }
+                  },
+                  "TAB_CHARACT_VALUES": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "NAME_CHAR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "CHAR_VALUE": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "DESCR_CVAL": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "NUM_VAL_FM": {
+                          "type": "number"
+                        },
+                        "NUM_VAL_TO": {
+                          "type": "number"
+                        },
+                        "CURR_VAL_FM": {
+                          "type": "number"
+                        },
+                        "CURR_VAL_TO": {
+                          "type": "number"
+                        },
+                        "VAL_RELATN": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "CHAR_VALUE_HIGH": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "CHAR_VALUE_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        },
+                        "DESCR_CVAL_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        },
+                        "CHAR_VALUE_HIGH_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_CUSTOMER_ACC_LIMIT_CHECK": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "AVAIL_ACC": {
+              "type": "string",
+              "maxLength": 1
+            },
+            "INV_APP_AMT": {
+              "type": "string",
+              "maxLength": 1
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_CUSTOMER_ADDRESS_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "T_ADDRESS": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "NAME2": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "NAME3": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "NAME4": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "TEL2_NUMBR": {
+                    "type": "string",
+                    "maxLength": 30
+                  },
+                  "ADDR_TYPE": {
+                    "type": "string",
+                    "maxLength": 2
+                  },
+                  "CUSTOMER": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "SORT1": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "NAME": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "COUNTRY": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "COUNTRYISO": {
+                    "type": "string",
+                    "maxLength": 2
+                  },
+                  "CITY": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "POSTL_COD1": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "REGION": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "STREET": {
+                    "type": "string",
+                    "maxLength": 60
+                  },
+                  "TEL1_NUMBR": {
+                    "type": "string",
+                    "maxLength": 30
+                  },
+                  "FAX_NUMBER": {
+                    "type": "string",
+                    "maxLength": 30
+                  },
+                  "ADDRESS": {
+                    "type": "string",
+                    "maxLength": 10
+                  }
+                }
+              }
+            },
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_CUSTOMER_ADDRESS_MOD": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_CUSTOMER_BILLINGDOC_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "T_TEXTS": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TDNAME": {
+                    "type": "string",
+                    "maxLength": 70
+                  },
+                  "TDID": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "LINES": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "TDFORMAT": {
+                          "type": "string",
+                          "maxLength": 2
+                        },
+                        "TDLINE": {
+                          "type": "string",
+                          "maxLength": 132
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "T_BILLING_DOC": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ITEMS": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "BILLINGDOCUMENTITEM": {
+                          "type": "string"
+                        },
+                        "SALESDOCUMENTITEM": {
+                          "type": "string"
+                        },
+                        "PRODUCT": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "BILLINGDOCUMENTITEMTEXT": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "BILLINGQUANTITY": {
+                          "type": "number"
+                        },
+                        "BILLINGQUANTITYINBASEUNIT": {
+                          "type": "number"
+                        },
+                        "BASEUNIT": {
+                          "type": "string",
+                          "maxLength": 3
+                        },
+                        "NETAMOUNT": {
+                          "type": "number"
+                        },
+                        "TAXAMOUNT": {
+                          "type": "number"
+                        },
+                        "TOTALAMOUNT": {
+                          "type": "number"
+                        },
+                        "TRANSPORTAMOUNT": {
+                          "type": "number"
+                        },
+                        "TRANSACTIONCURRENCY": {
+                          "type": "string",
+                          "maxLength": 5
+                        },
+                        "BILLINGPLAN": {
+                          "type": "string",
+                          "maxLength": 10
+                        },
+                        "BILLINGPLANITEM": {
+                          "type": "string"
+                        },
+                        "BILLINGPLANBILLINGDATE": {
+                          "type": "string"
+                        },
+                        "BILLINGPLANSERVICESTARTDATE": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "SOLDTOPARTY": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "BILLINGDOCUMENT": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "SDDOCUMENTCATEGORY": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "BILLINGDOCUMENTTYPE": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "BILLINGDOCUMENTDATE": {
+                    "type": "string"
+                  },
+                  "CREATIONDATE": {
+                    "type": "string"
+                  },
+                  "CREATIONTIME": {
+                    "type": "string"
+                  },
+                  "SHIPPINGCONDITION": {
+                    "type": "string",
+                    "maxLength": 2
+                  },
+                  "INCOTERMSCLASSIFICATION": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "CUSTOMERPAYMENTTERMS": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "INVOICECLEARINGSTATUS": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "FULLYPAID": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "SALESDOCUMENT": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "COMPANYCODE": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "SALESORGANIZATION": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "SALESGROUP": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "SALESOFFICE": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "SALESDOCUMENTTYPE": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "SALESDOCUMENTDATE": {
+                    "type": "string"
+                  },
+                  "PURCHASEORDERBYCUSTOMER": {
+                    "type": "string",
+                    "maxLength": 35
+                  },
+                  "PAYER": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "PAYERFULLNAME": {
+                    "type": "string",
+                    "maxLength": 80
+                  },
+                  "PAYERSTREETNAME": {
+                    "type": "string",
+                    "maxLength": 60
+                  },
+                  "PAYERPOSTALCODE": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "PAYERCITYNAME": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "SHIPTO": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "SHIPTOFULLNAME": {
+                    "type": "string",
+                    "maxLength": 80
+                  },
+                  "SHIPTOSTREETNAME": {
+                    "type": "string",
+                    "maxLength": 60
+                  },
+                  "SHIPTOPOSTALCODE": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "SHIPTOCITYNAME": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "SOLDTOEMAILADDRESS": {
+                    "type": "string",
+                    "maxLength": 241
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_CUSTOMER_CREATE": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "INCOTERMS": {
+              "type": "string",
+              "maxLength": 3
+            },
+            "CUSTOMER_GROUP": {
+              "type": "string",
+              "maxLength": 2
+            },
+            "KUNNR": {
+              "type": "string",
+              "maxLength": 10
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_CUSTOMER_QUOTATION_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "T_QUOTATION": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "HEADER": {
+                    "type": "object",
+                    "properties": {
+                      "VBELN": {
+                        "type": "string",
+                        "maxLength": 10
+                      },
+                      "ERDAT": {
+                        "type": "string"
+                      },
+                      "ERNAM": {
+                        "type": "string",
+                        "maxLength": 12
+                      },
+                      "BNDDT": {
+                        "type": "string"
+                      },
+                      "WAERK": {
+                        "type": "string",
+                        "maxLength": 5
+                      },
+                      "KUNNR": {
+                        "type": "string",
+                        "maxLength": 10
+                      },
+                      "BSTKD": {
+                        "type": "string",
+                        "maxLength": 35
+                      }
+                    }
+                  },
+                  "ITEM": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "VBELN": {
+                          "type": "string",
+                          "maxLength": 10
+                        },
+                        "POSNR": {
+                          "type": "string"
+                        },
+                        "MATNR": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "ARKTX": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "ZIEME": {
+                          "type": "string",
+                          "maxLength": 3
+                        },
+                        "KWMENG": {
+                          "type": "number"
+                        },
+                        "TOTALBASEPRICE": {
+                          "type": "number"
+                        },
+                        "TOTALDISCOUNT": {
+                          "type": "number"
+                        },
+                        "TOTALNETPRICE": {
+                          "type": "number"
+                        },
+                        "TOTALTAX": {
+                          "type": "number"
+                        },
+                        "UEPOS": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_CUSTOMER_SALES_HIST_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "T_SALES_HISTORY": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "VBELN": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "POSNR": {
+                    "type": "string"
+                  },
+                  "FKART": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "NETWR": {
+                    "type": "number"
+                  },
+                  "VERDVSK": {
+                    "type": "number"
+                  },
+                  "VTEXT": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "WAERK": {
+                    "type": "string",
+                    "maxLength": 5
+                  },
+                  "KUNAG": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "NAME1": {
+                    "type": "string",
+                    "maxLength": 30
+                  },
+                  "MATNR": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "ARKTX": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "PRODH": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "PRODUCTHIERARCHY1": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "TEXT_LEVEL1": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "PRODUCTHIERARCHY2": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "TEXT_LEVEL2": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "FKIMG": {
+                    "type": "number"
+                  },
+                  "VRKME": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "FKDAT": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_CUSTOMER_SHIPTO_ADDR_ADD": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "SHIPTO": {
+              "type": "string",
+              "maxLength": 10
+            },
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_CUSTOMER_SHIPTO_ADDR_DEL": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_MATERIAL_BASE2_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "T_MATERIAL": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "MATNR": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "VERD_VSK": {
+                    "type": "number"
+                  },
+                  "VERD": {
+                    "type": "number"
+                  },
+                  "TAX_PERCENT": {
+                    "type": "number"
+                  },
+                  "TAXM1": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "TAB_STORAGE": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "LGORT": {
+                          "type": "string",
+                          "maxLength": 4
+                        },
+                        "LGOBE": {
+                          "type": "string",
+                          "maxLength": 16
+                        },
+                        "PHYS_QTY": {
+                          "type": "number"
+                        },
+                        "NOTDEL_QTY": {
+                          "type": "number"
+                        },
+                        "RSV_QTY": {
+                          "type": "number"
+                        },
+                        "AVAIL_QTY": {
+                          "type": "number"
+                        },
+                        "AVAIL_DATE": {
+                          "type": "string"
+                        },
+                        "ERFMG": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  "MVGR3": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "MVGR2": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "DISCOUNT_TYPE": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "GR_VERD": {
+                    "type": "number"
+                  },
+                  "GR_VERD_VSK": {
+                    "type": "number"
+                  },
+                  "PHYS_QTY": {
+                    "type": "number"
+                  },
+                  "NOTDEL_QTY": {
+                    "type": "number"
+                  },
+                  "RSV_QTY": {
+                    "type": "number"
+                  },
+                  "AVAIL_QTY": {
+                    "type": "number"
+                  },
+                  "PO_QTY": {
+                    "type": "number"
+                  },
+                  "CONF_QTY": {
+                    "type": "number"
+                  },
+                  "SCHED_DATE": {
+                    "type": "string"
+                  },
+                  "CONF_DATE": {
+                    "type": "string"
+                  },
+                  "AVAIL_DATE": {
+                    "type": "string"
+                  },
+                  "LAEDA": {
+                    "type": "string"
+                  },
+                  "LAUHR": {
+                    "type": "string"
+                  },
+                  "MTART": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "MVGR1": {
+                    "type": "string",
+                    "maxLength": 3
+                  }
+                }
+              }
+            },
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_MATERIAL_BASE_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "T_MATERIAL": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "MATNR": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "VERD_VSK": {
+                    "type": "number"
+                  },
+                  "VERD": {
+                    "type": "number"
+                  },
+                  "TAX_PERCENT": {
+                    "type": "number"
+                  },
+                  "TAXM1": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "TAB_STORAGE": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "LGORT": {
+                          "type": "string",
+                          "maxLength": 4
+                        },
+                        "LGOBE": {
+                          "type": "string",
+                          "maxLength": 16
+                        },
+                        "PHYS_QTY": {
+                          "type": "number"
+                        },
+                        "NOTDEL_QTY": {
+                          "type": "number"
+                        },
+                        "RSV_QTY": {
+                          "type": "number"
+                        },
+                        "AVAIL_QTY": {
+                          "type": "number"
+                        },
+                        "AVAIL_DATE": {
+                          "type": "string"
+                        },
+                        "ERFMG": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  "MVGR3": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "MVGR2": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "DISCOUNT_TYPE": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "GR_VERD": {
+                    "type": "number"
+                  },
+                  "GR_VERD_VSK": {
+                    "type": "number"
+                  },
+                  "PHYS_QTY": {
+                    "type": "number"
+                  },
+                  "NOTDEL_QTY": {
+                    "type": "number"
+                  },
+                  "RSV_QTY": {
+                    "type": "number"
+                  },
+                  "AVAIL_QTY": {
+                    "type": "number"
+                  },
+                  "PO_QTY": {
+                    "type": "number"
+                  },
+                  "CONF_QTY": {
+                    "type": "number"
+                  },
+                  "SCHED_DATE": {
+                    "type": "string"
+                  },
+                  "CONF_DATE": {
+                    "type": "string"
+                  },
+                  "AVAIL_DATE": {
+                    "type": "string"
+                  },
+                  "LAEDA": {
+                    "type": "string"
+                  },
+                  "LAUHR": {
+                    "type": "string"
+                  },
+                  "MTART": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "MVGR1": {
+                    "type": "string",
+                    "maxLength": 3
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_MATERIAL_CROSS_SELL_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "T_MATERIAL": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "MATNR": {
+                    "type": "string",
+                    "maxLength": 40
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_MATERIAL_DETAIL2_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "T_MATERIAL": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "MATNR": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "MFRPN": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "EXTWG": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "MVGR2": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "MVGR3": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "MVGR4": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "BEZEI": {
+                    "type": "string",
+                    "maxLength": 25
+                  },
+                  "PRDHA": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "CLASS": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "PARENT_CLASS": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "CLASS2": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "PARENT_CLASS2": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "DISPO": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "DSNAM": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "EAN11": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "TAB_CHARACT": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "CHARACT": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "VALUE_CHAR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "INHERITED": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "INSTANCE": {
+                          "type": "string"
+                        },
+                        "VALUE_NEUTRAL": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "CHARACT_DESCR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "VALUE_CHAR_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        },
+                        "VALUE_NEUTRAL_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        }
+                      }
+                    }
+                  },
+                  "TAB_CHARACT2": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "CHARACT": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "VALUE_CHAR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "INHERITED": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "INSTANCE": {
+                          "type": "string"
+                        },
+                        "VALUE_NEUTRAL": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "CHARACT_DESCR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "VALUE_CHAR_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        },
+                        "VALUE_NEUTRAL_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        }
+                      }
+                    }
+                  },
+                  "VERD_VSK": {
+                    "type": "number"
+                  },
+                  "VERD": {
+                    "type": "number"
+                  },
+                  "TAX_PERCENT": {
+                    "type": "number"
+                  },
+                  "TAXM1": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "TAB_STORAGE": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "LGORT": {
+                          "type": "string",
+                          "maxLength": 4
+                        },
+                        "LGOBE": {
+                          "type": "string",
+                          "maxLength": 16
+                        },
+                        "PHYS_QTY": {
+                          "type": "number"
+                        },
+                        "NOTDEL_QTY": {
+                          "type": "number"
+                        },
+                        "RSV_QTY": {
+                          "type": "number"
+                        },
+                        "AVAIL_QTY": {
+                          "type": "number"
+                        },
+                        "AVAIL_DATE": {
+                          "type": "string"
+                        },
+                        "ERFMG": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  "TAB_CROSS": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MATNR": {
+                          "type": "string",
+                          "maxLength": 40
+                        }
+                      }
+                    }
+                  },
+                  "MAKTX": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "ZZMAKTX": {
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "SPECIAL": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "GR_VERD": {
+                    "type": "number"
+                  },
+                  "GR_VERD_VSK": {
+                    "type": "number"
+                  },
+                  "WEBTEXT": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "TDFORMAT": {
+                          "type": "string",
+                          "maxLength": 2
+                        },
+                        "TDLINE": {
+                          "type": "string",
+                          "maxLength": 132
+                        }
+                      }
+                    }
+                  },
+                  "WEBHEAD": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "TDFORMAT": {
+                          "type": "string",
+                          "maxLength": 2
+                        },
+                        "TDLINE": {
+                          "type": "string",
+                          "maxLength": 132
+                        }
+                      }
+                    }
+                  },
+                  "AVAIL_DATE": {
+                    "type": "string"
+                  },
+                  "SCHED_DATE": {
+                    "type": "string"
+                  },
+                  "CONF_DATE": {
+                    "type": "string"
+                  },
+                  "PHYS_QTY": {
+                    "type": "number"
+                  },
+                  "NOTDEL_QTY": {
+                    "type": "number"
+                  },
+                  "RSV_QTY": {
+                    "type": "number"
+                  },
+                  "AVAIL_QTY": {
+                    "type": "number"
+                  },
+                  "PO_QTY": {
+                    "type": "number"
+                  },
+                  "CONF_QTY": {
+                    "type": "number"
+                  },
+                  "LAEDA": {
+                    "type": "string"
+                  },
+                  "LAUHR": {
+                    "type": "string"
+                  },
+                  "MTART": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "WEBRACK": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "TDFORMAT": {
+                          "type": "string",
+                          "maxLength": 2
+                        },
+                        "TDLINE": {
+                          "type": "string",
+                          "maxLength": 132
+                        }
+                      }
+                    }
+                  },
+                  "CARBFOOT": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "WEIGHT_GROSS": {
+                    "type": "number"
+                  },
+                  "WEIGHT_NET": {
+                    "type": "number"
+                  },
+                  "WEIGHT_UNIT": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "VOLUME": {
+                    "type": "number"
+                  },
+                  "VOLUME_UNIT": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "SIZE_DIMENS": {
+                    "type": "string",
+                    "maxLength": 32
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_MATERIAL_DETAIL_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "T_MATERIAL": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "MATNR": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "MFRPN": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "EXTWG": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "MVGR2": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "MVGR3": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "MVGR4": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "BEZEI": {
+                    "type": "string",
+                    "maxLength": 25
+                  },
+                  "PRDHA": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "CLASS": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "PARENT_CLASS": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "CLASS2": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "PARENT_CLASS2": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "DISPO": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "DSNAM": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "EAN11": {
+                    "type": "string",
+                    "maxLength": 18
+                  },
+                  "TAB_CHARACT": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "CHARACT": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "VALUE_CHAR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "INHERITED": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "INSTANCE": {
+                          "type": "string"
+                        },
+                        "VALUE_NEUTRAL": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "CHARACT_DESCR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "VALUE_CHAR_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        },
+                        "VALUE_NEUTRAL_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        }
+                      }
+                    }
+                  },
+                  "TAB_CHARACT2": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "CHARACT": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "VALUE_CHAR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "INHERITED": {
+                          "type": "string",
+                          "maxLength": 1
+                        },
+                        "INSTANCE": {
+                          "type": "string"
+                        },
+                        "VALUE_NEUTRAL": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "CHARACT_DESCR": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "VALUE_CHAR_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        },
+                        "VALUE_NEUTRAL_LONG": {
+                          "type": "string",
+                          "maxLength": 70
+                        }
+                      }
+                    }
+                  },
+                  "VERD_VSK": {
+                    "type": "number"
+                  },
+                  "VERD": {
+                    "type": "number"
+                  },
+                  "TAX_PERCENT": {
+                    "type": "number"
+                  },
+                  "TAXM1": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "TAB_STORAGE": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "LGORT": {
+                          "type": "string",
+                          "maxLength": 4
+                        },
+                        "LGOBE": {
+                          "type": "string",
+                          "maxLength": 16
+                        },
+                        "PHYS_QTY": {
+                          "type": "number"
+                        },
+                        "NOTDEL_QTY": {
+                          "type": "number"
+                        },
+                        "RSV_QTY": {
+                          "type": "number"
+                        },
+                        "AVAIL_QTY": {
+                          "type": "number"
+                        },
+                        "AVAIL_DATE": {
+                          "type": "string"
+                        },
+                        "ERFMG": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  "TAB_CROSS": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MATNR": {
+                          "type": "string",
+                          "maxLength": 40
+                        }
+                      }
+                    }
+                  },
+                  "MAKTX": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "ZZMAKTX": {
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "SPECIAL": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "GR_VERD": {
+                    "type": "number"
+                  },
+                  "GR_VERD_VSK": {
+                    "type": "number"
+                  },
+                  "WEBTEXT": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "TDFORMAT": {
+                          "type": "string",
+                          "maxLength": 2
+                        },
+                        "TDLINE": {
+                          "type": "string",
+                          "maxLength": 132
+                        }
+                      }
+                    }
+                  },
+                  "WEBHEAD": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "TDFORMAT": {
+                          "type": "string",
+                          "maxLength": 2
+                        },
+                        "TDLINE": {
+                          "type": "string",
+                          "maxLength": 132
+                        }
+                      }
+                    }
+                  },
+                  "AVAIL_DATE": {
+                    "type": "string"
+                  },
+                  "SCHED_DATE": {
+                    "type": "string"
+                  },
+                  "CONF_DATE": {
+                    "type": "string"
+                  },
+                  "PHYS_QTY": {
+                    "type": "number"
+                  },
+                  "NOTDEL_QTY": {
+                    "type": "number"
+                  },
+                  "RSV_QTY": {
+                    "type": "number"
+                  },
+                  "AVAIL_QTY": {
+                    "type": "number"
+                  },
+                  "PO_QTY": {
+                    "type": "number"
+                  },
+                  "CONF_QTY": {
+                    "type": "number"
+                  },
+                  "LAEDA": {
+                    "type": "string"
+                  },
+                  "LAUHR": {
+                    "type": "string"
+                  },
+                  "MTART": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "WEBRACK": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "TDFORMAT": {
+                          "type": "string",
+                          "maxLength": 2
+                        },
+                        "TDLINE": {
+                          "type": "string",
+                          "maxLength": 132
+                        }
+                      }
+                    }
+                  },
+                  "CARBFOOT": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "WEIGHT_GROSS": {
+                    "type": "number"
+                  },
+                  "WEIGHT_NET": {
+                    "type": "number"
+                  },
+                  "WEIGHT_UNIT": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "VOLUME": {
+                    "type": "number"
+                  },
+                  "VOLUME_UNIT": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "SIZE_DIMENS": {
+                    "type": "string",
+                    "maxLength": 32
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_MATERIAL_TEXT_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "STRING": {
+              "type": "string"
+            },
+            "T_LONGTEXT": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ROW": {
+                    "type": "integer"
+                  },
+                  "FORMAT_COL": {
+                    "type": "string",
+                    "maxLength": 2
+                  },
+                  "TEXT_LINE": {
+                    "type": "string",
+                    "maxLength": 132
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_NATIONAL_REGISTRY_READ": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "TYPE": {
+              "type": "string",
+              "maxLength": 1
+            },
+            "S_NATR_REG": {
+              "type": "object",
+              "properties": {
+                "MANDT": {
+                  "type": "string",
+                  "maxLength": 3
+                },
+                "KENNITALA": {
+                  "type": "string"
+                },
+                "NAFN1": {
+                  "type": "string",
+                  "maxLength": 35
+                },
+                "HEIMILI": {
+                  "type": "string",
+                  "maxLength": 35
+                },
+                "HEIMILI2": {
+                  "type": "string",
+                  "maxLength": 35
+                },
+                "POSTNR": {
+                  "type": "string",
+                  "maxLength": 10
+                },
+                "ATVVFLOKK": {
+                  "type": "string"
+                },
+                "BANNMERKI": {
+                  "type": "string",
+                  "maxLength": 1
+                },
+                "KENNIEIG": {
+                  "type": "string"
+                },
+                "NNR": {
+                  "type": "string"
+                },
+                "FJSK": {
+                  "type": "string"
+                },
+                "RODUN": {
+                  "type": "string",
+                  "maxLength": 31
+                },
+                "SVFEL": {
+                  "type": "string"
+                },
+                "HEIM_KD": {
+                  "type": "string",
+                  "maxLength": 12
+                },
+                "KYN": {
+                  "type": "string",
+                  "maxLength": 1
+                },
+                "HJU": {
+                  "type": "string",
+                  "maxLength": 1
+                },
+                "RIKISFANG": {
+                  "type": "string",
+                  "maxLength": 2
+                },
+                "FST": {
+                  "type": "string",
+                  "maxLength": 4
+                },
+                "FDAG": {
+                  "type": "string"
+                },
+                "MAKI": {
+                  "type": "string"
+                },
+                "KT_UMB": {
+                  "type": "string"
+                },
+                "SOKN": {
+                  "type": "string",
+                  "maxLength": 3
+                },
+                "HEIM0112SL": {
+                  "type": "string",
+                  "maxLength": 12
+                },
+                "HEIM_SID": {
+                  "type": "string",
+                  "maxLength": 12
+                },
+                "AFDRIF": {
+                  "type": "string",
+                  "maxLength": 4
+                },
+                "DAGSAFDR": {
+                  "type": "string"
+                },
+                "REFM": {
+                  "type": "string",
+                  "maxLength": 2
+                },
+                "LOGSV": {
+                  "type": "string"
+                },
+                "SVEI2": {
+                  "type": "string"
+                },
+                "POSTBOX": {
+                  "type": "string",
+                  "maxLength": 10
+                },
+                "POSTBOX_PONR": {
+                  "type": "string",
+                  "maxLength": 10
+                },
+                "BERIST_TIL": {
+                  "type": "string",
+                  "maxLength": 31
+                },
+                "BERIST_TIL_PONR": {
+                  "type": "string",
+                  "maxLength": 10
+                },
+                "SIDAST_BREYTT": {
+                  "type": "string"
+                },
+                "VSKNR": {
+                  "type": "string"
+                },
+                "STARFSEMI": {
+                  "type": "string",
+                  "maxLength": 16
+                },
+                "ATVVNUMER": {
+                  "type": "string"
+                },
+                "EK": {
+                  "type": "string",
+                  "maxLength": 2
+                }
+              }
+            },
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_ORDER_INVOICE_PDF2_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "OUTPUTTYPE": {
+              "type": "string",
+              "maxLength": 4
+            },
+            "PDF": {
+              "type": "string",
+              "format": "binary"
+            },
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_ORDER_INVOICE_PDF_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "PDF": {
+              "type": "string",
+              "format": "binary"
+            },
+            "OUTPUTTYPE": {
+              "type": "string",
+              "maxLength": 4
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_ORDER_QUOTATION_PDF_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "PDF": {
+              "type": "string",
+              "format": "binary"
+            }
+          }
+        }
+      }
+    },
+    "ZEC_S_SO_CREATE": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "DELVN": {
+              "type": "string",
+              "maxLength": 10
+            },
+            "RETURN": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "MESSAGE": {
+                    "type": "string",
+                    "maxLength": 220
+                  }
+                }
+              }
+            },
+            "VBELN": {
+              "type": "string",
+              "maxLength": 10
+            },
+            "ITEM": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ITM_NUMBER": {
+                    "type": "string"
+                  },
+                  "MATERIAL": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "TARGET_QTY": {
+                    "type": "number"
+                  },
+                  "REF_DOC": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "REF_DOC_IT": {
+                    "type": "string"
+                  },
+                  "INCOTERMS1": {
+                    "type": "string",
+                    "maxLength": 3
+                  },
+                  "NET_VALUE": {
+                    "type": "number"
+                  },
+                  "SUBTOTAL_1": {
+                    "type": "number"
+                  },
+                  "COUPON": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "MTART": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "CUST_GROUP": {
+                    "type": "string",
+                    "maxLength": 2
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ZMS_S_JOURNAL_GET": {
+      "type": "object",
+      "properties": {
+        "DATA": {
+          "type": "object",
+          "properties": {
+            "JOURNAL_ENTRIES": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "LEDGER": {
+                    "type": "string",
+                    "maxLength": 2
+                  },
+                  "COMPANY_CODE": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "FISCAL_YEAR": {
+                    "type": "string"
+                  },
+                  "DOCUMENT_NR": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "POSTING_ITEM": {
+                    "type": "string",
+                    "maxLength": 6
+                  },
+                  "DOCUMENT_DATE": {
+                    "type": "string"
+                  },
+                  "TEXT": {
+                    "type": "string",
+                    "maxLength": 50
+                  },
+                  "AMOUNT": {
+                    "type": "number"
+                  },
+                  "CURRENCY": {
+                    "type": "string",
+                    "maxLength": 5
+                  },
+                  "BALANCE": {
+                    "type": "number"
+                  },
+                  "CUSTOMER": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "ACCOUNT_TYPE": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "SSID": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "NAME": {
+                    "type": "string",
+                    "maxLength": 60
+                  },
+                  "REFERENCE_DOCUMENT": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "REFERENCE_TYPE": {
+                    "type": "string",
+                    "maxLength": 5
+                  },
+                  "OUTPUT": {
+                    "type": "string",
+                    "maxLength": 1
+                  },
+                  "OUTPUT_TYPES": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "DOCUMENT": {
+                          "type": "string",
+                          "maxLength": 30
+                        },
+                        "OUTPUT_TYPE": {
+                          "type": "string",
+                          "maxLength": 4
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "START_BALANCE": {
+              "type": "number"
+            },
+            "END_BALANCE": {
+              "type": "number"
+            },
+            "IS_ERROR": {
+              "type": "string",
+              "maxLength": 1
+            },
+            "ERROR_MSG": {
+              "type": "string",
+              "maxLength": 60
+            }
+          }
+        }
+      }
+    }
+  }
+}
