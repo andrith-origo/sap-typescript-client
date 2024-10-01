@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { OrderQuotationPdfGetListData, OrderQuotationPdfGetListParams } from "./data-contracts";
+import { OrderQuotationPdfGetData, OrderQuotationPdfGetParams } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
 export class OrderQuotationPdfGet<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
@@ -17,17 +17,17 @@ export class OrderQuotationPdfGet<SecurityDataType = unknown> extends HttpClient
    * No description
    *
    * @tags Order
-   * @name OrderQuotationPdfGetList
+   * @name OrderQuotationPdfGet
    * @summary Get quotation from invoice
    * @request GET:/ORDER_QUOTATION_PDF_GET/
    * @secure
-   * @response `200` `OrderQuotationPdfGetListData` successful operation
+   * @response `200` `OrderQuotationPdfGetData` successful operation
    * @response `401` `void` not authorized
    * @response `404` `void` not found
    * @response `500` `void` error
    */
-  orderQuotationPdfGetList = (query: OrderQuotationPdfGetListParams, params: RequestParams = {}) =>
-    this.request<OrderQuotationPdfGetListData, void>({
+  orderQuotationPdfGet = (query: OrderQuotationPdfGetParams, params: RequestParams = {}) =>
+    this.request<OrderQuotationPdfGetData, void>({
       path: `/ORDER_QUOTATION_PDF_GET/`,
       method: "GET",
       query: query,

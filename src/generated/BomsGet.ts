@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { BomsGetListData, BomsGetListParams } from "./data-contracts";
+import { BomsGetData, BomsGetParams } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
 export class BomsGet<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
@@ -17,17 +17,17 @@ export class BomsGet<SecurityDataType = unknown> extends HttpClient<SecurityData
    * No description
    *
    * @tags Boms
-   * @name BomsGetList
+   * @name BomsGet
    * @summary Get product package
    * @request GET:/BOMS_GET/
    * @secure
-   * @response `200` `BomsGetListData` successful operation
+   * @response `200` `BomsGetData` successful operation
    * @response `401` `void` not authorized
    * @response `404` `void` not found
    * @response `500` `void` error
    */
-  bomsGetList = (query: BomsGetListParams, params: RequestParams = {}) =>
-    this.request<BomsGetListData, void>({
+  bomsGet = (query: BomsGetParams, params: RequestParams = {}) =>
+    this.request<BomsGetData, void>({
       path: `/BOMS_GET/`,
       method: "GET",
       query: query,

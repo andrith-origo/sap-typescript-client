@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { SoCreateCreateData } from "./data-contracts";
+import { SoCreateData } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
 export class SoCreate<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
@@ -17,20 +17,20 @@ export class SoCreate<SecurityDataType = unknown> extends HttpClient<SecurityDat
    * No description
    *
    * @tags Order
-   * @name SoCreateCreate
+   * @name SoCreate
    * @summary Creates Sales Order
    * @request POST:/SO_CREATE/
    * @secure
-   * @response `200` `SoCreateCreateData` successful operation
+   * @response `200` `SoCreateData` successful operation
    * @response `401` `void` not authorized
    * @response `404` `void` not found
    * @response `500` `void` error
    */
-  soCreateCreate = (JSON: any, params: RequestParams = {}) =>
-    this.request<SoCreateCreateData, void>({
+  soCreate = (data: any, params: RequestParams = {}) =>
+    this.request<SoCreateData, void>({
       path: `/SO_CREATE/`,
       method: "POST",
-      body: JSON,
+      body: data,
       secure: true,
       type: ContentType.Json,
       format: "json",

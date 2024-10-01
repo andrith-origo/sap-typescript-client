@@ -1300,187 +1300,188 @@ export interface ZMS_S_JOURNAL_GET {
   };
 }
 
-export type BomsBase2GetCreateData = ZECSBOMSBASE2GET;
+export type BomsBase2GetData = ZECSBOMSBASE2GET;
 
-export type BomsBaseGetCreateData = ZEC_S_BOMS_BASE_GET;
+export type BomsBaseGetData = ZEC_S_BOMS_BASE_GET;
 
-export interface BomsGetListParams {
-  T_MATERIAL?: any[];
+export interface BomsGetParams {
+  /** @maxLength 10 */
+  WEBID: string;
+  /** Array of materials */
+  T_MATERIAL?: string[];
+}
+
+export type BomsGetData = ZEC_S_BOMS_GET;
+
+export interface ClassCharGetParams {
   /** @maxLength 10 */
   WEBID: string;
 }
 
-export type BomsGetListData = ZEC_S_BOMS_GET;
+export type ClassCharGetData = ZEC_S_CLASS_CHAR_GET;
 
-export type SoCreateCreateData = ZEC_S_SO_CREATE;
+export type SoCreateData = ZEC_S_SO_CREATE;
 
-export interface CustomerAccLimitCheckListParams {
+export interface CustomerAccLimitCheckParams {
   INV_AMOUNT: number;
+  /** @maxLength 10 */
+  WEBID: string;
   KENNITALA?: string;
   /** @maxLength 10 */
   KUNNR?: string;
-  /** @maxLength 10 */
-  WEBID: string;
 }
 
-export type CustomerAccLimitCheckListData = ZEC_S_CUSTOMER_ACC_LIMIT_CHECK;
+export type CustomerAccLimitCheckData = ZEC_S_CUSTOMER_ACC_LIMIT_CHECK;
 
-export interface CustomerAddressGetListParams {
+export interface CustomerAddressGetParams {
   /** @maxLength 10 */
   KUNNR: string;
-  /** @maxLength 2 */
-  TYPE?: string;
   /** @maxLength 10 */
   WEBID: string;
+  /** @maxLength 2 */
+  TYPE?: string;
 }
 
-export type CustomerAddressGetListData = ZEC_S_CUSTOMER_ADDRESS_GET;
+export type CustomerAddressGetData = ZEC_S_CUSTOMER_ADDRESS_GET;
 
-export type CustomerAddressModCreateData = ZEC_S_CUSTOMER_ADDRESS_MOD;
+export type CustomerAddressModData = ZEC_S_CUSTOMER_ADDRESS_MOD;
 
-export type CustomerShiptoAddrAddCreateData = ZEC_S_CUSTOMER_SHIPTO_ADDR_ADD;
+export type CustomerShiptoAddrAddData = ZEC_S_CUSTOMER_SHIPTO_ADDR_ADD;
 
-export type CustomerShiptoAddrDelCreateData = ZEC_S_CUSTOMER_SHIPTO_ADDR_DEL;
+export type CustomerShiptoAddrDelData = ZEC_S_CUSTOMER_SHIPTO_ADDR_DEL;
 
-export interface CustomerBillingdocGetListParams {
+export interface CustomerBillingdocGetParams {
+  /** @maxLength 10 */
+  KUNNR: string;
+  /** @maxLength 10 */
+  WEBID: string;
   /** @maxLength 10 */
   BILLINGDOCUMENT?: string;
   DATE_FROM?: string;
   DATE_TO?: string;
-  /** @maxLength 10 */
-  KUNNR: string;
   /** @maxLength 1 */
   TEXT?: string;
-  /** @maxLength 10 */
-  WEBID: string;
 }
 
-export type CustomerBillingdocGetListData = ZEC_S_CUSTOMER_BILLINGDOC_GET;
+export type CustomerBillingdocGetData = ZEC_S_CUSTOMER_BILLINGDOC_GET;
 
-export type CustomerCreateCreateData = ZEC_S_CUSTOMER_CREATE;
+export type CustomerCreateData = ZEC_S_CUSTOMER_CREATE;
 
-export interface CustomerQuotationGetListParams {
+export interface CustomerQuotationGetParams {
   /** @maxLength 10 */
   KUNNR: string;
+  /** @maxLength 10 */
+  WEBID: string;
   /** @maxLength 10 */
   QUOTATION?: string;
-  /** @maxLength 10 */
-  WEBID: string;
 }
 
-export type CustomerQuotationGetListData = ZEC_S_CUSTOMER_QUOTATION_GET;
+export type CustomerQuotationGetData = ZEC_S_CUSTOMER_QUOTATION_GET;
 
-export interface CustomerSalesHistoryGetListParams {
+export interface CustomerSalesHistoryGetParams {
+  /** @maxLength 10 */
+  KUNNR: string;
+  /** @maxLength 10 */
+  WEBID: string;
   DATE_FROM?: string;
   DATE_TO?: string;
-  /** @maxLength 10 */
-  KUNNR: string;
-  /** @maxLength 10 */
-  WEBID: string;
 }
 
-export type CustomerSalesHistoryGetListData = ZEC_S_CUSTOMER_SALES_HIST_GET;
+export type CustomerSalesHistoryGetData = ZEC_S_CUSTOMER_SALES_HIST_GET;
 
-export type MaterialBase2GetCreateData = ZECSMATERIALBASE2GET;
+export type MaterialBase2GetData = ZECSMATERIALBASE2GET;
 
-export type MaterialBaseGetCreateData = ZEC_S_MATERIAL_BASE_GET;
+export type MaterialBaseGetData = ZEC_S_MATERIAL_BASE_GET;
 
-export interface MaterialCrossSellGetListParams {
+export interface MaterialCrossSellGetParams {
   /** @maxLength 40 */
   MATERIAL: string;
   /** @maxLength 10 */
   WEBID: string;
 }
 
-export type MaterialCrossSellGetListData = ZEC_S_MATERIAL_CROSS_SELL_GET;
+export type MaterialCrossSellGetData = ZEC_S_MATERIAL_CROSS_SELL_GET;
 
-export interface MaterialDetail2GetListParams {
+export interface MaterialDetail2GetParams {
+  /** @maxLength 10 */
+  WEBID: string;
   /** @maxLength 40 */
   MATERIAL?: string;
   /** @maxLength 1 */
   SIMULATE_PRICE?: string;
-  /** @maxLength 10 */
-  WEBID: string;
 }
 
-export type MaterialDetail2GetListData = ZECSMATERIALDETAIL2GET;
+export type MaterialDetail2GetData = ZECSMATERIALDETAIL2GET;
 
-export interface MaterialDetailGetListParams {
+export interface MaterialDetailGetParams {
+  /** @maxLength 10 */
+  WEBID: string;
   /** @maxLength 40 */
   MATERIAL?: string;
   /** @maxLength 1 */
   SIMULATE_PRICE?: string;
-  /** @maxLength 10 */
-  WEBID: string;
 }
 
-export type MaterialDetailGetListData = ZEC_S_MATERIAL_DETAIL_GET;
+export type MaterialDetailGetData = ZEC_S_MATERIAL_DETAIL_GET;
 
-export interface MaterialTextGetListParams {
+export interface MaterialTextGetParams {
   /** @maxLength 40 */
   MATERIAL: string;
   /** @maxLength 10 */
   WEBID: string;
 }
 
-export type MaterialTextGetListData = ZEC_S_MATERIAL_TEXT_GET;
+export type MaterialTextGetData = ZEC_S_MATERIAL_TEXT_GET;
 
-export interface OrderInvoicePdf2GetListParams {
+export interface NationalRegistryReadParams {
+  KENNITALA: string;
   /** @maxLength 10 */
-  BILLINGDOC?: string;
+  WEBID: string;
+}
+
+export type NationalRegistryReadData = ZEC_S_NATIONAL_REGISTRY_READ;
+
+export interface OrderInvoicePdf2GetParams {
   /** @maxLength 10 */
   KUNNR: string;
+  /** @maxLength 10 */
+  WEBID: string;
+  /** @maxLength 10 */
+  BILLINGDOC?: string;
   /** @maxLength 4 */
   OUTPUTTYPE?: string;
   /** @maxLength 10 */
   SALESDOC?: string;
   /** @maxLength 1 */
   SKIP_LEGACY?: string;
-  /** @maxLength 10 */
-  WEBID: string;
 }
 
-export type OrderInvoicePdf2GetListData = ZECSORDERINVOICEPDF2GET;
+export type OrderInvoicePdf2GetData = ZECSORDERINVOICEPDF2GET;
 
-export interface OrderInvoicePdfGetListParams {
-  /** @maxLength 10 */
-  BILLINGDOC?: string;
+export interface OrderInvoicePdfGetParams {
   /** @maxLength 10 */
   KUNNR: string;
+  /** @maxLength 10 */
+  WEBID: string;
+  /** @maxLength 10 */
+  BILLINGDOC?: string;
   /** @maxLength 4 */
   OUTPUTTYPE?: string;
   /** @maxLength 10 */
   SALESDOC?: string;
   /** @maxLength 1 */
   SKIP_LEGACY?: string;
-  /** @maxLength 10 */
-  WEBID: string;
 }
 
-export type OrderInvoicePdfGetListData = ZEC_S_ORDER_INVOICE_PDF_GET;
+export type OrderInvoicePdfGetData = ZEC_S_ORDER_INVOICE_PDF_GET;
 
-export interface OrderQuotationPdfGetListParams {
+export interface OrderQuotationPdfGetParams {
   /** @maxLength 10 */
   QUOTATION: string;
   /** @maxLength 10 */
   WEBID: string;
 }
 
-export type OrderQuotationPdfGetListData = ZEC_S_ORDER_QUOTATION_PDF_GET;
+export type OrderQuotationPdfGetData = ZEC_S_ORDER_QUOTATION_PDF_GET;
 
-export interface ClassCharGetListParams {
-  /** @maxLength 10 */
-  WEBID: string;
-}
-
-export type ClassCharGetListData = ZEC_S_CLASS_CHAR_GET;
-
-export interface NationalRegistryReadListParams {
-  KENNITALA: string;
-  /** @maxLength 10 */
-  WEBID: string;
-}
-
-export type NationalRegistryReadListData = ZEC_S_NATIONAL_REGISTRY_READ;
-
-export type MsJournalGetCreateData = ZMS_S_JOURNAL_GET;
+export type MsJournalGetData = ZMS_S_JOURNAL_GET;

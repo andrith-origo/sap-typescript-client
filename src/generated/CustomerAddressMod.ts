@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { CustomerAddressModCreateData } from "./data-contracts";
+import { CustomerAddressModData } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
 export class CustomerAddressMod<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
@@ -17,20 +17,20 @@ export class CustomerAddressMod<SecurityDataType = unknown> extends HttpClient<S
    * No description
    *
    * @tags Customer
-   * @name CustomerAddressModCreate
+   * @name CustomerAddressMod
    * @summary Modify customer address
    * @request POST:/CUSTOMER_ADDRESS_MOD/
    * @secure
-   * @response `200` `CustomerAddressModCreateData` successful operation
+   * @response `200` `CustomerAddressModData` successful operation
    * @response `401` `void` not authorized
    * @response `404` `void` not found
    * @response `500` `void` error
    */
-  customerAddressModCreate = (JSON: any, params: RequestParams = {}) =>
-    this.request<CustomerAddressModCreateData, void>({
+  customerAddressMod = (data: any, params: RequestParams = {}) =>
+    this.request<CustomerAddressModData, void>({
       path: `/CUSTOMER_ADDRESS_MOD/`,
       method: "POST",
-      body: JSON,
+      body: data,
       secure: true,
       type: ContentType.Json,
       format: "json",

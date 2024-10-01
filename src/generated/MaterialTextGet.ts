@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { MaterialTextGetListData, MaterialTextGetListParams } from "./data-contracts";
+import { MaterialTextGetData, MaterialTextGetParams } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
 export class MaterialTextGet<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
@@ -17,17 +17,17 @@ export class MaterialTextGet<SecurityDataType = unknown> extends HttpClient<Secu
    * No description
    *
    * @tags Material
-   * @name MaterialTextGetList
+   * @name MaterialTextGet
    * @summary Get long text for material
    * @request GET:/MATERIAL_TEXT_GET/
    * @secure
-   * @response `200` `MaterialTextGetListData` successful operation
+   * @response `200` `MaterialTextGetData` successful operation
    * @response `401` `void` not authorized
    * @response `404` `void` not found
    * @response `500` `void` error
    */
-  materialTextGetList = (query: MaterialTextGetListParams, params: RequestParams = {}) =>
-    this.request<MaterialTextGetListData, void>({
+  materialTextGet = (query: MaterialTextGetParams, params: RequestParams = {}) =>
+    this.request<MaterialTextGetData, void>({
       path: `/MATERIAL_TEXT_GET/`,
       method: "GET",
       query: query,

@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { MaterialBase2GetCreateData } from "./data-contracts";
+import { MaterialBase2GetData } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
 export class MaterialBase2Get<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
@@ -17,20 +17,20 @@ export class MaterialBase2Get<SecurityDataType = unknown> extends HttpClient<Sec
    * No description
    *
    * @tags Material
-   * @name MaterialBase2GetCreate
+   * @name MaterialBase2Get
    * @summary Get material basic information
    * @request POST:/MATERIAL_BASE2_GET/
    * @secure
-   * @response `200` `MaterialBase2GetCreateData` successful operation
+   * @response `200` `MaterialBase2GetData` successful operation
    * @response `401` `void` not authorized
    * @response `404` `void` not found
    * @response `500` `void` error
    */
-  materialBase2GetCreate = (JSON: any, params: RequestParams = {}) =>
-    this.request<MaterialBase2GetCreateData, void>({
+  materialBase2Get = (data: any, params: RequestParams = {}) =>
+    this.request<MaterialBase2GetData, void>({
       path: `/MATERIAL_BASE2_GET/`,
       method: "POST",
-      body: JSON,
+      body: data,
       secure: true,
       type: ContentType.Json,
       format: "json",

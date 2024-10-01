@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { CustomerAddressGetListData, CustomerAddressGetListParams } from "./data-contracts";
+import { CustomerAddressGetData, CustomerAddressGetParams } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
 export class CustomerAddressGet<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
@@ -17,17 +17,17 @@ export class CustomerAddressGet<SecurityDataType = unknown> extends HttpClient<S
    * No description
    *
    * @tags Customer
-   * @name CustomerAddressGetList
+   * @name CustomerAddressGet
    * @summary Get all addresses for Customer
    * @request GET:/CUSTOMER_ADDRESS_GET/
    * @secure
-   * @response `200` `CustomerAddressGetListData` successful operation
+   * @response `200` `CustomerAddressGetData` successful operation
    * @response `401` `void` not authorized
    * @response `404` `void` not found
    * @response `500` `void` error
    */
-  customerAddressGetList = (query: CustomerAddressGetListParams, params: RequestParams = {}) =>
-    this.request<CustomerAddressGetListData, void>({
+  customerAddressGet = (query: CustomerAddressGetParams, params: RequestParams = {}) =>
+    this.request<CustomerAddressGetData, void>({
       path: `/CUSTOMER_ADDRESS_GET/`,
       method: "GET",
       query: query,

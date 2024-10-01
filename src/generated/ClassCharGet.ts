@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { ClassCharGetListData, ClassCharGetListParams } from "./data-contracts";
+import { ClassCharGetData, ClassCharGetParams } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
 export class ClassCharGet<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
@@ -17,17 +17,17 @@ export class ClassCharGet<SecurityDataType = unknown> extends HttpClient<Securit
    * No description
    *
    * @tags Other
-   * @name ClassCharGetList
+   * @name ClassCharGet
    * @summary Get Class and Characteristic
    * @request GET:/CLASS_CHAR_GET/
    * @secure
-   * @response `200` `ClassCharGetListData` successful operation
+   * @response `200` `ClassCharGetData` successful operation
    * @response `401` `void` not authorized
    * @response `404` `void` not found
    * @response `500` `void` error
    */
-  classCharGetList = (query: ClassCharGetListParams, params: RequestParams = {}) =>
-    this.request<ClassCharGetListData, void>({
+  classCharGet = (query: ClassCharGetParams, params: RequestParams = {}) =>
+    this.request<ClassCharGetData, void>({
       path: `/CLASS_CHAR_GET/`,
       method: "GET",
       query: query,

@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { OrderInvoicePdf2GetListData, OrderInvoicePdf2GetListParams } from "./data-contracts";
+import { OrderInvoicePdf2GetData, OrderInvoicePdf2GetParams } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
 export class OrderInvoicePdf2Get<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
@@ -17,17 +17,17 @@ export class OrderInvoicePdf2Get<SecurityDataType = unknown> extends HttpClient<
    * No description
    *
    * @tags Order
-   * @name OrderInvoicePdf2GetList
+   * @name OrderInvoicePdf2Get
    * @summary Get invoice from Order
    * @request GET:/ORDER_INVOICE_PDF2_GET/
    * @secure
-   * @response `200` `OrderInvoicePdf2GetListData` successful operation
+   * @response `200` `OrderInvoicePdf2GetData` successful operation
    * @response `401` `void` not authorized
    * @response `404` `void` not found
    * @response `500` `void` error
    */
-  orderInvoicePdf2GetList = (query: OrderInvoicePdf2GetListParams, params: RequestParams = {}) =>
-    this.request<OrderInvoicePdf2GetListData, void>({
+  orderInvoicePdf2Get = (query: OrderInvoicePdf2GetParams, params: RequestParams = {}) =>
+    this.request<OrderInvoicePdf2GetData, void>({
       path: `/ORDER_INVOICE_PDF2_GET/`,
       method: "GET",
       query: query,

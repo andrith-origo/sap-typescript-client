@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { CustomerQuotationGetListData, CustomerQuotationGetListParams } from "./data-contracts";
+import { CustomerQuotationGetData, CustomerQuotationGetParams } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
 export class CustomerQuotationGet<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
@@ -17,17 +17,17 @@ export class CustomerQuotationGet<SecurityDataType = unknown> extends HttpClient
    * No description
    *
    * @tags Customer
-   * @name CustomerQuotationGetList
+   * @name CustomerQuotationGet
    * @summary Get quotation for Customer
    * @request GET:/CUSTOMER_QUOTATION_GET/
    * @secure
-   * @response `200` `CustomerQuotationGetListData` successful operation
+   * @response `200` `CustomerQuotationGetData` successful operation
    * @response `401` `void` not authorized
    * @response `404` `void` not found
    * @response `500` `void` error
    */
-  customerQuotationGetList = (query: CustomerQuotationGetListParams, params: RequestParams = {}) =>
-    this.request<CustomerQuotationGetListData, void>({
+  customerQuotationGet = (query: CustomerQuotationGetParams, params: RequestParams = {}) =>
+    this.request<CustomerQuotationGetData, void>({
       path: `/CUSTOMER_QUOTATION_GET/`,
       method: "GET",
       query: query,

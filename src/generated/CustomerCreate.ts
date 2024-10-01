@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { CustomerCreateCreateData } from "./data-contracts";
+import { CustomerCreateData } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
 export class CustomerCreate<SecurityDataType = unknown> extends HttpClient<SecurityDataType> {
@@ -17,20 +17,20 @@ export class CustomerCreate<SecurityDataType = unknown> extends HttpClient<Secur
    * No description
    *
    * @tags Customer
-   * @name CustomerCreateCreate
+   * @name CustomerCreate
    * @summary Create new customer from National registry
    * @request POST:/CUSTOMER_CREATE/
    * @secure
-   * @response `200` `CustomerCreateCreateData` successful operation
+   * @response `200` `CustomerCreateData` successful operation
    * @response `401` `void` not authorized
    * @response `404` `void` not found
    * @response `500` `void` error
    */
-  customerCreateCreate = (JSON: any, params: RequestParams = {}) =>
-    this.request<CustomerCreateCreateData, void>({
+  customerCreate = (data: any, params: RequestParams = {}) =>
+    this.request<CustomerCreateData, void>({
       path: `/CUSTOMER_CREATE/`,
       method: "POST",
-      body: JSON,
+      body: data,
       secure: true,
       type: ContentType.Json,
       format: "json",
