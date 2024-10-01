@@ -18,7 +18,7 @@ export class NationalRegistryRead<SecurityDataType = unknown> extends HttpClient
    *
    * @tags Other
    * @name NationalRegistryRead
-   * @summary /NATIONAL_REGISTRY_READ/?KENNITALA={KENNITALA}&WEBID={WEBID} - GET
+   * @summary national-registry-read
    * @request GET:/NATIONAL_REGISTRY_READ/
    * @secure
    * @response `200` `NationalRegistryReadData` successful operation

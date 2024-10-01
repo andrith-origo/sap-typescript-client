@@ -1313,13 +1313,6 @@ export interface BomsGetParams {
 
 export type BomsGetData = ZEC_S_BOMS_GET;
 
-export interface ClassCharGetParams {
-  /** @maxLength 10 */
-  WEBID: string;
-}
-
-export type ClassCharGetData = ZEC_S_CLASS_CHAR_GET;
-
 export type SoCreateData = ZEC_S_SO_CREATE;
 
 export interface CustomerAccLimitCheckParams {
@@ -1433,14 +1426,6 @@ export interface MaterialTextGetParams {
 
 export type MaterialTextGetData = ZEC_S_MATERIAL_TEXT_GET;
 
-export interface NationalRegistryReadParams {
-  KENNITALA: string;
-  /** @maxLength 10 */
-  WEBID: string;
-}
-
-export type NationalRegistryReadData = ZEC_S_NATIONAL_REGISTRY_READ;
-
 export interface OrderInvoicePdf2GetParams {
   /** @maxLength 10 */
   KUNNR: string;
@@ -1483,5 +1468,20 @@ export interface OrderQuotationPdfGetParams {
 }
 
 export type OrderQuotationPdfGetData = ZEC_S_ORDER_QUOTATION_PDF_GET;
+
+export interface ClassCharGetParams {
+  /** @maxLength 10 */
+  WEBID: string;
+}
+
+export type ClassCharGetData = ZEC_S_CLASS_CHAR_GET;
+
+export interface NationalRegistryReadParams {
+  KENNITALA: string;
+  /** @maxLength 10 */
+  WEBID: string;
+}
+
+export type NationalRegistryReadData = ZEC_S_NATIONAL_REGISTRY_READ;
 
 export type MsJournalGetData = ZMS_S_JOURNAL_GET;
